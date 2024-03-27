@@ -1,0 +1,1 @@
+# prometheus-thanson-s3-minio
