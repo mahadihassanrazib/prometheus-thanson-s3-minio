@@ -1,38 +1,3 @@
-kubectl apply -f monitoring-ns.yaml
-
-kubectl create -f prometheus-operator-crds/
-
-kubectl apply -R -f prometheus-operator
-
-kubectl get po -n monitoring --show-labels
-
-app.kubernetes.io/name=prometheus-operator
-
-kubectl logs -l app.kubernetes.io/name=prometheus-operator -n monitoring -f
-
-vagrant ssh -- -L 7001:localhost:5432
-
-minikube addons enable storage-provisioner
-
-minikube addons enable volumesnapshots
-
-minikube addons enable csi-hostpath-driver
-
-kubectl apply -f prometheus
-
-kubectl logs -l app.kubernetes.io/name=prometheus -n monitoring -f
-
-# minio install
-kubectl apply -f minio.ns.yaml
-
-kubectl apply minio/
-
-kubectl get svc -n minio
-
-minikube service minio-console --url -n minio
-
-
-
 
 =========================================================
 kubectl apply -f monitoring-ns.yaml
@@ -271,7 +236,7 @@ WARNING: There are "resources" sections in the chart not set. Using "resourcesPr
 
 
 
-
+minikube service minio-console --url -n minio
 
 
 
